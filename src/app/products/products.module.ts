@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ActionsComponent } from './product/actions/actions.component';
+import { ProductsService } from './products.service';
 
 
 
@@ -14,6 +15,7 @@ import { ActionsComponent } from './product/actions/actions.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  providers: [ProductsService]
 })
 export class ProductsModule { }

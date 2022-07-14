@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
+import { ProductsModule } from './products/products.module';
+import { CartModule } from './cart/cart.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { JumbotronComponent } from './jumbotron/jumbotron.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProductsModule,
+    CartModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
