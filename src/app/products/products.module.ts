@@ -4,6 +4,8 @@ import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ActionsComponent } from './product/actions/actions.component';
 import { ProductsService } from './products.service';
+import { ProductsPageComponent } from './products-page.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 
 
@@ -11,11 +13,14 @@ import { ProductsService } from './products.service';
   declarations: [
     ProductComponent,
     PaginationComponent,
-    ActionsComponent
+    ActionsComponent,
+    ProductsPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductsRoutingModule
   ],
-  providers: [ProductsService]
+  providers: [ProductsService],
+  exports: [ProductComponent, PaginationComponent, ActionsComponent]
 })
 export class ProductsModule { }

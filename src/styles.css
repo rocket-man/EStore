@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@400;600&display=swap');
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+/*
+.EStore{
+
+    font-family: 'Finlandica', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    padding: auto;
+    color: rgba(2, 16, 19, 0.804);
+}
+
+.EStore .headings{
+
+    font-family: 'Finlandica', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    padding: auto;
+    color: rgba(2, 16, 19, 0.804);
+}
+
+.EStore .general{
+
+    font-family: 'Finlandica', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    padding: auto;
+    color: rgba(2, 16, 19, 0.804);
+}
+
+button, action-buttons{
+    background-color:honeydew;
+}
+*/
