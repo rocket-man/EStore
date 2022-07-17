@@ -6,13 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
-
-    //on init pass the Product details, 
-    //call the product service where URL is defiened to get the products
+    throw new Error('Method not implemented.');
   }
 
 }
+
+  /*
+  loadProductList(){
+    this.productService.findAllProducts().subscribe({
+      next: (productFetched: Product) => { //notarray//
+        this.productAll=productFetched;
+        this.productAll.forEach(productSingle =>{
+          this.productAll.push(productSingle)
+        })
+      },
+      error: e=>console.log(e)
+    })
+  }*/
+
+
+
+
+

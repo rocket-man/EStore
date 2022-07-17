@@ -9,22 +9,22 @@ const routes: Routes = [
     loadChildren: () =>
       import('./products/products.module').then(
         (module) => module.ProductsModule
-      )
+      ),
   },
   {
     path: 'cart',
     loadChildren: () =>
-      import('./cart/cart.module').then((module) => module.CartModule)
+      import('./cart/cart.module').then((module) => module.CartModule),
   },
   {
     path: 'user',
     loadChildren: () =>
-      import('./user/user.module').then((module) => module.UserModule)
+      import('./user/user.module').then((module) => module.UserModule),
   },
   {
     path: '',
-    component: JumbotronComponent
-  }
+    component: JumbotronComponent,
+  },
 ];
 
 @NgModule({

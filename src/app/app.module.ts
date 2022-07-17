@@ -15,16 +15,16 @@ import { UserModule } from './user/user.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    JumbotronComponent
+    JumbotronComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductsModule,
     CartModule,
-    UserModule
+    UserModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
