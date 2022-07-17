@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { OrderItems } from '../models/orderItems';
+import { Cart } from '../models/cart';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class ProductsService {
     'http://localhost:8080/eStore/products/addAnother';
   private removeFromCartUrl =
     'http://localhost:8080/eStore/products/removeFromCart';
-  private getOrderItemUrl = 'http://localhost:8080/eStore/cart/getOrderItem';
+  private getOrderItemUrl = 'http://localhost:8080/eStore/products/getOrderItem';
 
   orderItem!: OrderItems;
 
@@ -33,28 +34,33 @@ export class ProductsService {
     return this.http.post(this.saveProductsUrl, product);
   }
 
-  public addProductToCart(product: Product) {
-    let orderItem = this.getOrderItem(product);
+  public addProductToCart(product: Product, cart: Cart) {
     //TODO:: handle mapping of product->orderItem in backend and DB
     return this.http.post(this.addProductToCartUrl, product);
   }
 
-  public addAnotherToCart(product: Product) {
+  public addAnotherToCart(product: Product, cart: Cart) {
     let orderItem = this.getOrderItem(product);
     orderItem.orderItemCount = orderItem.orderItemCount + 1;
     return this.http.post(this.addAnotherToCartUrl, orderItem);
   }
 
-  public removeFromCart(product: Product) {
-    let orderItemLocal = this.getOrderItem(product);
-    orderItemLocal.orderItemCount = 0;
-    return this.http.post(this.removeFromCartUrl, orderItemLocal);
+  public removeFromCart(product: Product, cart: Cart) {
+    let orderItem = this.getOrderItem(product);
+    orderItem.orderItemCount = 0;
+    return this.http.post(this.removeFromCartUrl, orderItem);
   }
 
   public getOrderItem(product: Product): OrderItems {
+    let params = new HttpParams()
+    .set('PRODUCT_ID', product.productID)
+    .set('USER_ID', 1)
     this.http
-      .get<OrderItems>(this.getOrderItemUrl)
+      .get<OrderItems>(this.getOrderItemUrl, {params: params})
       .subscribe((item) => (this.orderItem = item));
     return this.orderItem;
+
+
+
   }
 }
