@@ -10,6 +10,9 @@ export class ProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    //on init pass the Product details, 
+    //call the product service where URL is defiened to get the products
   }
 
 }

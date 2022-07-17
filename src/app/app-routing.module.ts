@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { JumbotronComponent } from './jumbotron/jumbotron.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./user/user.module').then((module) => module.UserModule)
   },
+  {
+    path: '',
+    component: JumbotronComponent
+  }
 ];
 
 @NgModule({
