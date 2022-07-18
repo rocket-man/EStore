@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from '../models/cart';
 import { OrderItems } from '../models/orderItems';
 import { Product } from '../models/product';
 import { ProductsService } from './products.service';
@@ -11,6 +12,7 @@ import { ProductsService } from './products.service';
 export class ProductsPageComponent implements OnInit {
   productAll: Product[] = [];
   orderItem!: OrderItems;
+  cart: Cart | undefined;
 
   constructor(private productService: ProductsService) {}
 
@@ -26,16 +28,16 @@ export class ProductsPageComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.productService.addProductToCart(product);
+    this.productService.addProductToCart(product, Cart);
   }
 
   addAnotherToCart(product: Product) {
     orderItem: OrderItems;
-    this.productService.addAnotherToCart(product);
+    this.productService.addAnotherToCart(product, Cart);
   }
 
   removeFromCart(product: Product) {
     orderItem: OrderItems;
-    this.productService.removeFromCart(product);
+    this.productService.removeFromCart(product, Cart);
   }
 }

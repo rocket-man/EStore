@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { OrderItems } from '../models/orderItems';
 import { Cart } from '../models/cart';
+import { GlobalService } from '../global.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { Cart } from '../models/cart';
 export class ProductsService {
   localProductsUrl: String = 'http://localhost:8080/eStore/products';
 
-  private getProductsUrl = this.localProductsUrl + '/viewAll'; 
+  private getProductsUrl = this.localProductsUrl + '/viewAll';
   // "http://localhost:8080/eStore/products/viewAll";
   private saveProductsUrl = 'http://localhost:8080/eStore/products/save';
   private addProductToCartUrl =
@@ -20,11 +21,15 @@ export class ProductsService {
     'http://localhost:8080/eStore/products/addAnother';
   private removeFromCartUrl =
     'http://localhost:8080/eStore/products/removeFromCart';
-  private getOrderItemUrl = 'http://localhost:8080/eStore/products/getOrderItem';
+  private getOrderItemUrl =
+    'http://localhost:8080/eStore/products/getOrderItem';
 
   orderItem!: OrderItems;
+  orderItemArray: OrderItems[] = []; 
+  //set in global-service as global variable, 
+  //so cart and products service can simultaneously use it.
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public globalService : GlobalService) {}
 
   public findAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.getProductsUrl);
@@ -53,14 +58,11 @@ export class ProductsService {
 
   public getOrderItem(product: Product): OrderItems {
     let params = new HttpParams()
-    .set('PRODUCT_ID', product.productID)
-    .set('USER_ID', 1)
+      .set('PRODUCT_ID', product.productID)
+      .set('USER_ID', 1);
     this.http
-      .get<OrderItems>(this.getOrderItemUrl, {params: params})
+      .get<OrderItems>(this.getOrderItemUrl, { params: params })
       .subscribe((item) => (this.orderItem = item));
     return this.orderItem;
-
-
-
   }
 }
